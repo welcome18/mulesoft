@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mulesoft:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+  web:
+    build: .
+    ports:
+     - "8084:8084"
