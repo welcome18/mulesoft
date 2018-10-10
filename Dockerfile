@@ -7,7 +7,7 @@ MAINTAINER sureshkumar
 # Copy configuration files
 WORKDIR /opt
 
-COPY mulesoft  .
+COPY mulesoft   .
 
 RUN yum install wget-1.14-15.el7_4.1.x86_64.rpm -y
 
@@ -17,18 +17,19 @@ ENV PATH="$PATH:$JAVA_HOME/bin"
 
 RUN yum install jdk-8u181-linux-x64.rpm -y
 
+
 # Define environment variables
 ENV MULE_HOME /opt/mule
 
 # Define mount points
-VOLUME [" /opt/mule/logs", "/opt/mule/conf", "/opt/mule/apps", "/opt/mule/domains" ]
-
-# Default http port
-EXPOSE 8084
+VOLUME [" /opt/mule/logs", "/opt/mule/conf", "/opt/mule/apps", "/opt/mule/domain                                                               s" ]
 
 # Define working directory
 WORKDIR /opt/mule/bin
 
-RUN ./mule start
+# Default http port
+EXPOSE 8084
+
+CMD [ "/opt/mule/bin/mule" ]
 
 
